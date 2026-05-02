@@ -75,12 +75,12 @@ const Analytics = () => {
             </div>
           ))}
         </div>
-        <div className="flex justify-between mt-4 px-2 text-sm text-gray-500 dark:text-gray-400 font-medium">
-          <div className="flex items-center"><div className="w-3 h-3 bg-green-600 dark:bg-green-500 rounded-full mr-2"></div>90+</div>
-          <div className="flex items-center"><div className="w-3 h-3 bg-green-400 dark:bg-green-400 rounded-full mr-2"></div>80-89</div>
-          <div className="flex items-center"><div className="w-3 h-3 bg-yellow-400 dark:bg-yellow-500 rounded-full mr-2"></div>70-79</div>
-          <div className="flex items-center"><div className="w-3 h-3 bg-orange-400 dark:bg-orange-500 rounded-full mr-2"></div>60-69</div>
-          <div className="flex items-center"><div className="w-3 h-3 bg-red-400 dark:bg-red-500 rounded-full mr-2"></div>&lt;60</div>
+        <div className="flex flex-wrap justify-center sm:justify-between mt-6 px-2 text-sm text-gray-500 dark:text-gray-400 font-medium gap-y-3 gap-x-4">
+          <div className="flex items-center whitespace-nowrap"><div className="w-3 h-3 bg-green-600 dark:bg-green-500 rounded-full mr-2"></div>90+</div>
+          <div className="flex items-center whitespace-nowrap"><div className="w-3 h-3 bg-green-400 dark:bg-green-400 rounded-full mr-2"></div>80-89</div>
+          <div className="flex items-center whitespace-nowrap"><div className="w-3 h-3 bg-yellow-400 dark:bg-yellow-500 rounded-full mr-2"></div>70-79</div>
+          <div className="flex items-center whitespace-nowrap"><div className="w-3 h-3 bg-orange-400 dark:bg-orange-500 rounded-full mr-2"></div>60-69</div>
+          <div className="flex items-center whitespace-nowrap"><div className="w-3 h-3 bg-red-400 dark:bg-red-500 rounded-full mr-2"></div>&lt;60</div>
         </div>
       </div>
     </div>

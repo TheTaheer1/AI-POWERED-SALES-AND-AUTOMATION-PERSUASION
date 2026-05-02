@@ -26,7 +26,7 @@ app.add_middleware(
 
 # Define absolute paths
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-STATIC_DIR = os.path.join(BASE_DIR, "static")
+STATIC_DIR = os.path.join(BASE_DIR, "..", "frontend", "dist")
 ASSETS_DIR = os.path.join(STATIC_DIR, "assets")
 
 # Mount assets specifically (Vite puts JS/CSS in dist/assets)

@@ -1,5 +1,5 @@
-# Use Python base image
-FROM python:3.10-slim
+# Use Python 3.11 base image to bypass Kaniko Riptide bug
+FROM python:3.11-slim
 WORKDIR /app
 
 # Copy backend requirements and install
@@ -17,4 +17,4 @@ ENV PORT=8080
 EXPOSE $PORT
 
 # Command to run the application
-CMD ["sh", "-c", "uvicorn main:app --host 0.0.0.0 --port ${PORT}"]
+ENTRYPOINT ["sh", "-c", "uvicorn main:app --host 0.0.0.0 --port ${PORT}"]

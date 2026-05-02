@@ -96,3 +96,5 @@ async def post_call(request: models.PostCallRequest):
         return await generate_post_call_intelligence(request)
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+# Force rebuild

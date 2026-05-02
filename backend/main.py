@@ -1,6 +1,8 @@
+import os
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import StreamingResponse
+from fastapi.responses import StreamingResponse, FileResponse
+from fastapi.staticfiles import StaticFiles
 from dotenv import load_dotenv
 
 import models
@@ -22,9 +24,28 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-@app.get("/")
-async def root():
-    return {"status": "ok", "message": "SalesGenie AI Backend is running!"}
+# Mount assets specifically (Vite puts JS/CSS in dist/assets)
+if os.path.isdir("static/assets"):
+    app.mount("/assets", StaticFiles(directory="static/assets"), name="assets")
+
+@app.get("/{full_path:path}")
+async def serve_frontend(full_path: str):
+    # Don't intercept API routes
+    if full_path.startswith("api/"):
+        raise HTTPException(status_code=404, detail="Not Found")
+    
+    # Try to serve the exact static file (e.g. vite.svg)
+    file_path = os.path.join("static", full_path)
+    if full_path and os.path.isfile(file_path):
+        return FileResponse(file_path)
+        
+    # Default to index.html for React Router
+    index_path = "static/index.html"
+    if os.path.isfile(index_path):
+        return FileResponse(index_path)
+        
+    # If static files aren't built yet (like in local dev), just return a basic message
+    return {"status": "ok", "message": "SalesGenie AI Backend is running! (Frontend not built)"}
 
 @app.post("/api/research", response_model=models.BuyerProfile)
 async def research_prospect(request: models.ResearchRequest):

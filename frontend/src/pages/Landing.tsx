@@ -67,9 +67,6 @@ const Landing = () => {
             >
               Get Started <ArrowRight className="ml-2 w-5 h-5" />
             </button>
-            <button className="w-full sm:w-auto bg-white dark:bg-gray-800 text-gray-900 dark:text-white border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 font-bold text-lg px-8 py-4 rounded-2xl transition-all">
-              Watch Demo
-            </button>
           </div>
         </div>
 

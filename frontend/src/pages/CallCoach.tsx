@@ -34,7 +34,7 @@ const CallCoach = () => {
     <div className="h-full flex flex-col bg-gray-900 text-gray-100 overflow-hidden relative">
       
       {/* Top HUD Bar */}
-      <div className="md:h-16 border-b border-gray-800 bg-black/50 backdrop-blur-md flex flex-col md:flex-row items-center justify-between p-4 md:px-6 z-20 gap-4 md:gap-0">
+      <div className="shrink-0 md:h-16 border-b border-gray-800 bg-black/50 backdrop-blur-md flex flex-col md:flex-row items-center justify-between p-4 md:px-6 z-20 gap-4 md:gap-0">
         <div className="flex items-center space-x-4 md:space-x-6 w-full md:w-auto justify-between md:justify-start">
           <button
             onClick={isRecording ? handleStopRecording : startRecording}

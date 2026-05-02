@@ -51,8 +51,8 @@ const AppLayout = ({ children }: { children: React.ReactNode }) => {
           </button>
         </header>
 
-        <div className="flex-1 overflow-y-auto p-4 lg:p-8">
-          <div className="animate-fade-in h-full max-w-7xl mx-auto">
+        <div className="flex-1 overflow-y-auto p-4 lg:p-8 flex flex-col relative">
+          <div className="animate-fade-in flex-1 w-full max-w-7xl mx-auto flex flex-col">
             {children}
           </div>
         </div>

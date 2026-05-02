@@ -31,7 +31,7 @@ const CallCoach = () => {
   };
 
   return (
-    <div className="h-full flex flex-col bg-gray-900 text-gray-100 overflow-hidden relative">
+    <div className="flex-1 flex flex-col bg-gray-900 text-gray-100 overflow-hidden relative">
       
       {/* Top HUD Bar */}
       <div className="shrink-0 w-full p-4 md:p-6 border-b border-gray-800 bg-black/50 backdrop-blur-md flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 z-20">
@@ -69,10 +69,10 @@ const CallCoach = () => {
       </div>
 
       {/* Main Content Area */}
-      <div className="flex-1 relative flex">
+      <div className="flex-1 relative flex min-h-0">
         
         {/* Teleprompter Transcript */}
-        <div className="flex-1 p-10 overflow-y-auto custom-scrollbar scroll-smooth">
+        <div className="flex-1 min-h-0 p-10 overflow-y-auto custom-scrollbar scroll-smooth">
           <div className="max-w-4xl mx-auto pb-40">
             {history.length === 0 && !transcript && !isRecording && !postCallData && !isLoadingPostCall && (
                <div className="flex flex-col items-center justify-center h-[60vh] opacity-30">

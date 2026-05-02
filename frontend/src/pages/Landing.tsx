@@ -71,7 +71,7 @@ const Landing = () => {
         </div>
 
         {/* Feature Highlights */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-24 max-w-5xl z-10 animate-fade-in" style={{animationDelay: '0.2s'}}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mt-16 md:mt-24 max-w-5xl w-full z-10 animate-fade-in" style={{animationDelay: '0.2s'}}>
           {[
             { icon: Search, title: 'Deep Research', desc: 'Agentic web scraping' },
             { icon: Mail, title: 'Smart Outreach', desc: 'Contextual sequences' },

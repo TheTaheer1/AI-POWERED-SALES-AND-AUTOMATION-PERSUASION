@@ -1,9 +1,13 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { LayoutDashboard, Search, Mail, Mic, BarChart2, Zap, Moon, Sun } from 'lucide-react';
+import { LayoutDashboard, Search, Mail, Mic, BarChart2, Zap, Moon, Sun, X } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 
-const Sidebar = () => {
+interface SidebarProps {
+  onClose?: () => void;
+}
+
+const Sidebar = ({ onClose }: SidebarProps) => {
   const { isDark, toggleTheme } = useTheme();
 
   const navItems = [
@@ -16,11 +20,18 @@ const Sidebar = () => {
 
   return (
     <div className="w-64 bg-sidebar-bg text-sidebar-text flex flex-col h-full shadow-xl transition-colors duration-300">
-      <div className="p-6 flex items-center space-x-3 mb-6">
-        <div className="bg-primary p-2 rounded-lg">
-          <Zap className="w-6 h-6 text-white" />
+      <div className="p-6 flex items-center justify-between mb-6">
+        <div className="flex items-center space-x-3">
+          <div className="bg-primary p-2 rounded-lg">
+            <Zap className="w-6 h-6 text-white" />
+          </div>
+          <h1 className="text-xl font-bold text-white tracking-wide">SalesGenie<span className="text-primary">.ai</span></h1>
         </div>
-        <h1 className="text-xl font-bold text-white tracking-wide">SalesGenie<span className="text-primary">.ai</span></h1>
+        {onClose && (
+          <button onClick={onClose} className="lg:hidden p-1 text-gray-400 hover:text-white rounded-md">
+            <X className="w-6 h-6" />
+          </button>
+        )}
       </div>
       
       <nav className="flex-1 px-4 space-y-2">

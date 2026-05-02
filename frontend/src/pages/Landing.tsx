@@ -8,23 +8,26 @@ const Landing = () => {
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 flex flex-col transition-colors duration-300">
       {/* Navbar */}
-      <nav className="p-6 flex justify-between items-center max-w-7xl mx-auto w-full z-10">
-        <div className="flex items-center space-x-2">
+      <nav className="p-4 md:p-6 flex flex-col sm:flex-row justify-between items-center max-w-7xl mx-auto w-full z-10 gap-4 sm:gap-0">
+        <div 
+          className="flex items-center space-x-2 cursor-pointer"
+          onClick={() => navigate('/')}
+        >
           <div className="bg-primary p-2 rounded-lg shadow-lg shadow-blue-500/30">
-            <Zap className="w-6 h-6 text-white" />
+            <Zap className="w-5 h-5 md:w-6 md:h-6 text-white" />
           </div>
-          <h1 className="text-2xl font-bold tracking-wide">SalesGenie<span className="text-primary">.ai</span></h1>
+          <h1 className="text-xl md:text-2xl font-bold tracking-wide">SalesGenie<span className="text-primary">.ai</span></h1>
         </div>
-        <div>
+        <div className="flex items-center space-x-2 md:space-x-4">
           <button 
             onClick={() => navigate('/dashboard')}
-            className="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary font-medium px-4 py-2 transition-colors"
+            className="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary font-medium px-3 md:px-4 py-2 transition-colors text-sm md:text-base"
           >
             Sign In
           </button>
           <button 
             onClick={() => navigate('/dashboard')}
-            className="bg-gray-900 dark:bg-white text-white dark:text-gray-900 font-medium px-5 py-2.5 rounded-xl hover:scale-105 transition-transform"
+            className="bg-gray-900 dark:bg-white text-white dark:text-gray-900 font-medium px-4 md:px-5 py-2 md:py-2.5 rounded-xl hover:scale-105 transition-transform text-sm md:text-base whitespace-nowrap"
           >
             Go to App
           </button>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { LayoutDashboard, Search, Mail, Mic, BarChart2, Zap, Moon, Sun, X } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 
@@ -9,6 +9,7 @@ interface SidebarProps {
 
 const Sidebar = ({ onClose }: SidebarProps) => {
   const { isDark, toggleTheme } = useTheme();
+  const navigate = useNavigate();
 
   const navItems = [
     { name: 'Dashboard', path: '/dashboard', icon: LayoutDashboard },
@@ -21,7 +22,13 @@ const Sidebar = ({ onClose }: SidebarProps) => {
   return (
     <div className="w-64 bg-sidebar-bg text-sidebar-text flex flex-col h-full shadow-xl transition-colors duration-300">
       <div className="p-6 flex items-center justify-between mb-6">
-        <div className="flex items-center space-x-3">
+        <div 
+          className="flex items-center space-x-3 cursor-pointer"
+          onClick={() => {
+            navigate('/');
+            if (onClose) onClose();
+          }}
+        >
           <div className="bg-primary p-2 rounded-lg">
             <Zap className="w-6 h-6 text-white" />
           </div>

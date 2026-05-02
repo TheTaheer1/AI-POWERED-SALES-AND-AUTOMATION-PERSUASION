@@ -10,9 +10,11 @@ import CallCoach from './pages/CallCoach';
 import Analytics from './pages/Analytics';
 
 import { Menu, X } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const AppLayout = ({ children }: { children: React.ReactNode }) => {
   const [sidebarOpen, setSidebarOpen] = React.useState(false);
+  const navigate = useNavigate();
 
   return (
     <div className="flex h-screen overflow-hidden bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
@@ -32,7 +34,10 @@ const AppLayout = ({ children }: { children: React.ReactNode }) => {
       <main className="flex-1 flex flex-col min-w-0 overflow-hidden">
         {/* Mobile Header */}
         <header className="lg:hidden flex items-center justify-between p-4 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
-          <div className="flex items-center space-x-2">
+          <div 
+            className="flex items-center space-x-2 cursor-pointer"
+            onClick={() => navigate('/')}
+          >
             <div className="bg-primary p-1.5 rounded-lg">
               <span className="text-white font-bold text-sm">SG</span>
             </div>

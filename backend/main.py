@@ -24,9 +24,14 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Define absolute paths
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+STATIC_DIR = os.path.join(BASE_DIR, "static")
+ASSETS_DIR = os.path.join(STATIC_DIR, "assets")
+
 # Mount assets specifically (Vite puts JS/CSS in dist/assets)
-if os.path.isdir("static/assets"):
-    app.mount("/assets", StaticFiles(directory="static/assets"), name="assets")
+if os.path.isdir(ASSETS_DIR):
+    app.mount("/assets", StaticFiles(directory=ASSETS_DIR), name="assets")
 
 @app.get("/{full_path:path}")
 async def serve_frontend(full_path: str):
@@ -35,17 +40,27 @@ async def serve_frontend(full_path: str):
         raise HTTPException(status_code=404, detail="Not Found")
     
     # Try to serve the exact static file (e.g. vite.svg)
-    file_path = os.path.join("static", full_path)
+    file_path = os.path.join(STATIC_DIR, full_path)
     if full_path and os.path.isfile(file_path):
         return FileResponse(file_path)
         
     # Default to index.html for React Router
-    index_path = "static/index.html"
+    index_path = os.path.join(STATIC_DIR, "index.html")
     if os.path.isfile(index_path):
         return FileResponse(index_path)
         
-    # If static files aren't built yet (like in local dev), just return a basic message
-    return {"status": "ok", "message": "SalesGenie AI Backend is running! (Frontend not built)"}
+    # Debugging info if static files aren't found
+    contents = "Static directory not found"
+    if os.path.isdir(STATIC_DIR):
+        contents = str(os.listdir(STATIC_DIR))
+        
+    return {
+        "status": "ok", 
+        "message": f"SalesGenie AI Backend is running! (Frontend not built)",
+        "debug_path": index_path,
+        "debug_contents": contents,
+        "debug_pwd": os.getcwd()
+    }
 
 @app.post("/api/research", response_model=models.BuyerProfile)
 async def research_prospect(request: models.ResearchRequest):

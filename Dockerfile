@@ -1,5 +1,5 @@
-# Use Python 3.11 base image to bypass Kaniko Riptide bug
-FROM python:3.11-slim
+# Use Python 3.10 buster base image to bypass Kaniko Riptide bug
+FROM python:3.10-buster
 WORKDIR /app
 
 # Copy backend requirements and install
